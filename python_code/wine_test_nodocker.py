@@ -7,12 +7,10 @@ from pyspark.rdd import reduce
 
 
 # Creating a Spark Session 
-spark = SparkSession.builder \
-    .master("local[*]") \
-    .config("spark.hadoop.javax.security.auth.useSubjectCredsOnly", "false") \
-    .config("spark.sql.execution.arrow.pyspark.enabled", "true") \
-    .getOrCreate()
-
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+# Checking for commandline arguments passed
+# If a file is passed via commandline, use that for prediction using model
+# Else throw an error
 
 try:
 	filepn =  str(sys.argv[1])
